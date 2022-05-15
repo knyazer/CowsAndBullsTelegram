@@ -33,7 +33,7 @@ public class Bot implements TelegramMvcController {
 	}
 
 	@MessageRequest(value = "/setLength")
-	public String setLength(User user, Chat chat) {
+	public String setLengthButEmpty(User user, Chat chat) {
 		return "Please, don't forget to provide a number after /setLength ! For example, /setLength 4";
 	}
 
@@ -115,7 +115,7 @@ public class Bot implements TelegramMvcController {
 				"1".repeat(userStats.getPreferredGuessLength());
 	}
 
-	@MessageRequest(value = "{guess:[0-9]{3,8}}")
+	@MessageRequest(value = "{guess:[0-9]+}")
 	public String makeGuess(@BotPathVariable("guess") String guess, User user, Chat chat) {
 		setup(user, chat);
 
