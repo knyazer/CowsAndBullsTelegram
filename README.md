@@ -5,4 +5,4 @@ A simple Cows and Bulls game written with obvious controls using the [Telegram M
 
 Bot is accessible on [@KnyazCowsAndBullsBot](https://t.me/KnyazCowsAndBullsBot)
 
-Great thanks to the @kshashov for the library development!
+Great thanks to the [@kshashov](https://github.com/kshashov) for the library development!
