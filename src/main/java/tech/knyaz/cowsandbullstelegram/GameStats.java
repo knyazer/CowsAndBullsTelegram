@@ -1,5 +1,6 @@
 package tech.knyaz.cowsandbullstelegram;
 
+import com.pengrad.telegrambot.model.Game;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -27,8 +28,21 @@ public class GameStats {
     @Getter
     private String secret;
 
-    public void init(String secret)
-    {
+    GameStats() {
+
+    }
+
+    GameStats(GameStats other) {
+        startTime = other.getStartTime();
+        endTime = other.getEndTime();
+        attempts = other.getAttempts();
+        finished = other.isFinished();
+        won = other.isWon();
+        guessLength = other.getGuessLength();
+        secret = other.getSecret();
+    }
+
+    public void init(String secret) {
         this.secret = secret;
         guessLength = secret.length();
 
@@ -47,13 +61,11 @@ public class GameStats {
         // Do not initialize other 'undefined' variables
     }
 
-    public void attemptFailed()
-    {
+    public void attemptFailed() {
         this.attempts++;
     }
 
-    public void attemptSucceeded()
-    {
+    public void attemptSucceeded() {
         this.attempts++;
 
         // Player won
@@ -63,8 +75,7 @@ public class GameStats {
         exit();
     }
 
-    public void quit()
-    {
+    public void quit() {
         // Player lost
         won = false;
 
@@ -72,8 +83,7 @@ public class GameStats {
         exit();
     }
 
-    private void exit()
-    {
+    private void exit() {
         // Set the finish time
         endTime = LocalDate.now();
 

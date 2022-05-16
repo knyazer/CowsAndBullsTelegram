@@ -25,7 +25,7 @@ public class UserStats {
     public void syncHistory()
     {
         if (currentGame.isFinished())
-            history.add(currentGame);
+            history.add(new GameStats(currentGame));
         else
             System.out.println("Written nothing as game not finished");
     }

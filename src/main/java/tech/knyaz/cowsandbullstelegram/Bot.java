@@ -102,7 +102,7 @@ public class Bot implements TelegramMvcController {
 		Random rand = new Random();
 		StringBuilder secret = new StringBuilder();
 		for (int i = 0; i < userStats.getPreferredGuessLength(); i++)
-			secret.append((char)((i == 0 ? '1' : '0') + rand.nextInt(i == 0 ? 10 : 9)));
+			secret.append((char)((i == 0 ? '1' : '0') + rand.nextInt(i == 0 ? 9 : 10)));
 
 		if (userStats.getCurrentGame() == null)
 			userStats.setCurrentGame(new GameStats());
@@ -162,8 +162,7 @@ public class Bot implements TelegramMvcController {
 
 	// Cheeky way to set default response
 	@MessageRequest(value = "{x:[^0-9]+}")
-	public String defaultBehaviour()
-	{
+	public String defaultBehaviour() {
 		return "You wrote unknown command. Here what you are able to do with this bot: \n\n" + help();
 	}
 
